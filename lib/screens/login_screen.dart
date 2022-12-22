@@ -19,102 +19,110 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(child: Image.asset("assets/images/dadsdairy.png")),
-              const Gap(24),
-              const Text(
-                "Login and start Writing",
-                style: TextStyle(
-                  color: Color(0xff55766a),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Gap(28),
-              TextFormField(
-                decoration:
-                    const InputDecoration(hintText: "Enter Email Or Phone"),
-              ),
-              const Gap(16),
-              TextFormField(
-                decoration: const InputDecoration(
-                  hintText: "Password",
-                  suffixIcon: Icon(
-                    Iconsax.eye,
-                    color: Colors.black,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(child: Image.asset("assets/images/dadsdairy.png")),
+                const Gap(24),
+                const Text(
+                  "Login and start Writing",
+                  style: TextStyle(
+                    color: Color(0xff55766a),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              const Gap(12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset("assets/images/tick.png"),
-                      const Gap(6),
-                      const Text(
-                        "Remember me",
+                const Gap(28),
+                TextFormField(
+                  decoration:
+                      const InputDecoration(hintText: "Enter Email Or Phone"),
+                ),
+                const Gap(16),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "Password",
+                    suffixIcon: Icon(
+                      Iconsax.eye,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const Gap(12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset("assets/images/tick.png"),
+                        const Gap(4),
+                        TextButton(
+                          child: const Text(
+                            "Remember me",
+                            style: TextStyle(
+                                fontSize: 12, color: Color(0xff55766a)),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const ForgotPassword()));
+                      },
+                      child: const Text(
+                        "Forgot password?",
                         style:
-                            TextStyle(fontSize: 12, color: Color(0xff55766a)),
+                            TextStyle(fontSize: 12, color: Color(0xff2b2b2b)),
                       ),
-                    ],
-                  ),
-                  TextButton(
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32),
+                PrimaryButton(
+                    title: "Log In",
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ForgotPassword()));
-                    },
-                    child: const Text(
-                      "Forgot password?",
-                      style: TextStyle(fontSize: 12, color: Color(0xff2b2b2b)),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
-              PrimaryButton(
-                  title: "Log In",
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const VerificationScreen(),
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const VerificationScreen(),
+                        ),
+                      );
+                    }),
+                const Gap(30),
+                Row(
+                  children: const [
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
                       ),
-                    );
-                  }),
-              const Gap(30),
-              Row(
-                children: const [
-                  Expanded(
-                    child: Divider(
-                      thickness: 1,
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      "or login with",
-                      style: TextStyle(color: Color(0xffa5a5a5)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        "or login with",
+                        style: TextStyle(color: Color(0xffa5a5a5)),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      thickness: 1,
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const Gap(40),
-              TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Create New Account",
-                    style: TextStyle(color: Colors.black),
-                  ))
-            ],
+                  ],
+                ),
+                const Gap(40),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Create New Account",
+                      style: TextStyle(color: Colors.black),
+                    ))
+              ],
+            ),
           ),
         ),
       ),

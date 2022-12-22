@@ -3,7 +3,6 @@ import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:gap/gap.dart';
 
 class VerificationScreen extends StatelessWidget {

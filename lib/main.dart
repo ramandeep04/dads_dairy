@@ -1,7 +1,8 @@
 import 'package:dads_dairy/screens/login_screen.dart';
+import 'package:dads_dairy/screens/my_dairy_screen.dart';
+import 'package:dads_dairy/screens/note_screen.dart';
 import 'package:dads_dairy/screens/profile_setup.dart';
 import 'package:dads_dairy/screens/reset_password.dart';
-import 'package:dads_dairy/screens/verification_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const  LoginScreen(),
+      home: const  NoteScreen(),
     );
   }
 }
