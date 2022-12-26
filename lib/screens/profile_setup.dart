@@ -54,7 +54,7 @@ class ProfileSetup extends StatelessWidget {
                   decoration: const InputDecoration(
                       hintText: "Confirm Password", suffixIcon: Icon(Iconsax.eye)),
                 ),
-             Gap(60),
+             const Gap(60),
                 PrimaryButton(title: "Submit", onPressed: (){})
               ],
             ),

@@ -39,6 +39,7 @@ dependencies:
   iconsax: ^0.0.8
   gap: ^2.0.1
   pin_code_fields: ^7.4.0
+  dotted_border: ^2.0.0+3
   
    
 

@@ -1,9 +1,14 @@
+import 'package:dads_dairy/screens/dairy_detailed_screen.dart';
+import 'package:dads_dairy/screens/final_screen.dart';
+import 'package:dads_dairy/screens/forgot_password.dart';
 import 'package:dads_dairy/screens/login_screen.dart';
 import 'package:dads_dairy/screens/my_dairy_screen.dart';
 import 'package:dads_dairy/screens/note_screen.dart';
+import 'package:dads_dairy/screens/place_order_screen.dart';
 import 'package:dads_dairy/screens/profile_setup.dart';
 import 'package:dads_dairy/screens/reset_password.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const  NoteScreen(),
+      home: const DairyDetailedScreen(),
     );
   }
 }

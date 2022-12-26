@@ -23,6 +23,7 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
                 fontSize: 22,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
+               
               ),
             ),
       centerTitle: true,
