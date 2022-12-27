@@ -1,4 +1,3 @@
-import 'package:dads_dairy/main.dart';
 import 'package:dads_dairy/screens/forgot_password.dart';
 import 'package:dads_dairy/screens/verification_screen.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';

@@ -1,8 +1,6 @@
 import 'package:dads_dairy/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:gap/gap.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -104,33 +102,30 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                           Row(
                             children: [
                               Column(
-                                children: [
+                                children: const [
                                   Icon(Iconsax.close_circle),
-                                  const Text("80%"),
+                                  Text("80%"),
                                 ],
                               )
                             ],
                           ),
                         ],
                       ),
-                      Column(
-                        children: [
-                          Text("2 MB"),
-                           LinearProgressIndicator(
-                            value: 0.8,
-                            color: Color(0xfff0f0f0),
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Color(0xff55776a)),
-                          ),
-                           
-                        ],
+                      const Text("2 MB"),
+                      const LinearProgressIndicator(
+                        value: 0.8,
+                        color: Color(0xfff0f0f0),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xff55776a)),
                       ),
-                     
                     ],
                   ),
                 ),
                 const Gap(20),
-                const Text("Page no. 1",style: TextStyle(color: Color(0xff172b4d)),),
+                const Text(
+                  "Page no. 1",
+                  style: TextStyle(color: Color(0xff172b4d)),
+                ),
                 const Gap(10),
                 Container(
                   padding: const EdgeInsets.all(22),
@@ -139,34 +134,45 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                       color: Colors.white),
                   child: Column(
                     children: [
-                       const Text(
+                      const Text(
                         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here,",
-                        style: TextStyle(color: Color(0xff172b4d),fontSize: 12),
+                        style:
+                            TextStyle(color: Color(0xff172b4d), fontSize: 12),
                       ),
                       const Gap(10),
-                     const Text(
+                      const Text(
                           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English………",
-                          style: TextStyle(fontSize: 12,color: Color(0xff172b4d),)),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xff172b4d),
+                          )),
                       const Gap(10),
                       const Text(
                           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                          style: TextStyle(color: Color(0xff172b4d),fontSize: 12)),
+                          style: TextStyle(
+                              color: Color(0xff172b4d), fontSize: 12)),
                       RichText(
                         text: const TextSpan(
                           text:
                               "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’",
-                          style: TextStyle(
-                            color: Color(0xff1e83c3),fontSize: 12
-                          ),
+                          style:
+                              TextStyle(color: Color(0xff1e83c3), fontSize: 12),
                           children: [
                             TextSpan(
                               text:
                                   "making it look like readable English. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English……..",
-                              style: TextStyle(color: Color(0xff172b4d),fontSize: 12),
+                              style: TextStyle(
+                                  color: Color(0xff172b4d), fontSize: 12),
                             )
                           ],
                         ),
                       ),
+                      const Gap(12),
+                      const Text("01",
+                          style: TextStyle(
+                              color: Color(0xff172b4d),
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "Merriweather"),),
                     ],
                   ),
                 ),

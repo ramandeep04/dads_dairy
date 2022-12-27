@@ -8,30 +8,29 @@ class FinalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Image.asset("assets/images/bgimage.png"),
-                Center(
-                  child: Image.asset("assets/images/dairy.png",
-                      width: 182, height: 280),
-                ),
-                const Gap(16),
-                const Text(
-                  "Thank you for Ordering.We are on our way.",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-                Expanded(
-                  
-                    child: Image.asset("assets/images/final.png",
-                        fit: BoxFit.contain))
-              ],
-            ),
-          ],
-        ),
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              Image.asset("assets/images/bgimage.png"),
+              Center(
+                child: Image.asset("assets/images/dairy.png",
+                    width: 182, height: 280),
+              ),
+              const Gap(16),
+              const Text(
+                
+                "Thank you for Ordering.We are on our way.",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+              Expanded(
+               
+                child: Image.asset("assets/images/final.png",
+                    fit: BoxFit.contain),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
