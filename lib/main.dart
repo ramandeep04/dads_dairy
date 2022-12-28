@@ -3,6 +3,8 @@ import 'package:dads_dairy/screens/final_screen.dart';
 import 'package:dads_dairy/screens/forgot_password.dart';
 import 'package:dads_dairy/screens/login_screen.dart';
 import 'package:dads_dairy/screens/my_dairy_screen.dart';
+import 'package:dads_dairy/screens/note_screen.dart';
+import 'package:dads_dairy/screens/page_screen.dart';
 import 'package:dads_dairy/screens/place_order_screen.dart';
 import 'package:dads_dairy/screens/profile_setup.dart';
 import 'package:dads_dairy/screens/verification_screen.dart';
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MyDairyScreen(),
+      home: const  PageScreen(),
     );
   }
 }

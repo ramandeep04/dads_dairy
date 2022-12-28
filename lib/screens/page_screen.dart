@@ -4,31 +4,41 @@ import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class NoteScreen extends StatelessWidget {
-  const NoteScreen({super.key});
+class PageScreen extends StatelessWidget {
+  const PageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xfffef8ee),
-      appBar: const MyAppbar(color: Color(0xfffef8ee),),
+      appBar: const MyAppbar(
+        color: Color(0xfffef8ee),
+      ),
       body: ListView(
         children: [
           Stack(
             children: [
               Image.asset(
-                "assets/images/page.png",
+                "assets/images/note.png",
                 fit: BoxFit.contain,
               ),
               Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.all(28),
-                    padding: const EdgeInsets.all(34),
+                    margin: const EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(30),
                     child: Column(
-                      children: [
-                        Image.asset("assets/images/hearts.png"),
-                        const Text(
+                      children: const [
+                        Text(
+                          "Not Happy To Be Leaving you",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "Merriweather",
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff172b4d)),
+                        ),
+                        Gap(20),
+                        Text(
                           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English.",
                           style: TextStyle(
                             fontFamily: "Holiday",
@@ -36,8 +46,8 @@ class NoteScreen extends StatelessWidget {
                             color: Color(0xff172b4d),
                           ),
                         ),
-                        const Gap(4),
-                        const Text(
+                        Gap(4),
+                        Text(
                           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using",
                           style: TextStyle(
                             fontFamily: "Holiday",
@@ -45,8 +55,8 @@ class NoteScreen extends StatelessWidget {
                             color: Color(0xff172b4d),
                           ),
                         ),
-                        const Gap(4),
-                        const Text(
+                        Gap(4),
+                        Text(
                           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English.",
                           style: TextStyle(
                             fontFamily: "Holiday",
@@ -91,7 +101,7 @@ class NoteScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Gap(20),
+                  const Gap(10),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: PrimaryButton(

@@ -4,12 +4,14 @@ import 'package:iconsax/iconsax.dart';
 class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
   final bool isBackRequired;
   final String? title;
+  final Color? color;
   final List<Widget>? actions;
   const MyAppbar({
     super.key,
     this.actions,
     this.isBackRequired = true,
     this.title,
+    this.color,
   });
 
   @override
@@ -23,12 +25,11 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
                 fontSize: 22,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
-               
               ),
             ),
       centerTitle: true,
       elevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: color ?? Colors.white,
       automaticallyImplyLeading: isBackRequired,
       leading: isBackRequired
           ? IconButton(

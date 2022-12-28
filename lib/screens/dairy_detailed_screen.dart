@@ -1,8 +1,10 @@
+import 'package:dads_dairy/screens/note_screen.dart';
+import 'package:dads_dairy/screens/place_order_screen.dart';
 import 'package:dads_dairy/widgets/appbar.dart';
+import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:gap/gap.dart';
-import 'package:iconsax/iconsax.dart';
 
 class DairyDetailedScreen extends StatefulWidget {
   const DairyDetailedScreen({super.key});
@@ -16,7 +18,10 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffeff8f5),
-      appBar: const MyAppbar(title: "Add New Diary"),
+      appBar: const MyAppbar(
+        title: "Add New Diary",
+        color: Color(0xffeff8f5),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
@@ -46,19 +51,21 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                     ),
                   ),
                 ),
-                const Gap(10),
+                const Gap(16),
                 const Text(
                   "Upload and attach files",
-                  style: TextStyle(color: Color(0xff172b4d)),
+                  style: TextStyle(
+                      color: Color(0xff172b4d), fontWeight: FontWeight.w600),
                 ),
                 const Gap(10),
                 Container(
+                  height: 140,
                   decoration: const BoxDecoration(color: Colors.white),
                   child: DottedBorder(
                     padding: const EdgeInsets.all(24),
                     color: const Color(0xff172b4d),
                     strokeWidth: 1,
-                    dashPattern: const [8, 8],
+                    dashPattern: const [5, 5],
                     borderType: BorderType.RRect,
                     radius: const Radius.circular(10),
                     strokeCap: StrokeCap.round,
@@ -66,13 +73,10 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Iconsax.document_favorite5,
-                            color: Color(0xff172b4d),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
+                        children: [
+                          Image.asset("assets/images/document.png"),
+                          const SizedBox(height: 4),
+                          const Text(
                             ("Click here to upload picture"),
                             style: TextStyle(color: Color(0xff898989)),
                           ),
@@ -82,53 +86,26 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                   ),
                 ),
                 const Gap(16),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: const [
-                              Icon(Iconsax.gallery),
-                              Gap(12),
-                              Text("Dads128735.jpeg"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                children: const [
-                                  Icon(Iconsax.close_circle),
-                                  Text("80%"),
-                                ],
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      const Text("2 MB"),
-                      const LinearProgressIndicator(
-                        value: 0.8,
-                        color: Color(0xfff0f0f0),
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Color(0xff55776a)),
-                      ),
-                    ],
-                  ),
+                const LoadingWidget(
+                  image: "assets/images/gallery.png",
+                  text: "Dads128735.jpeg",
+                  progressbar: "80%",
+                ),
+                const Gap(12),
+                const LoadingWidget(
+                  image: "assets/images/gallery.png",
+                  text: "Dads128735.jpeg",
+                  progressbar: "60%",
                 ),
                 const Gap(20),
                 const Text(
                   "Page no. 1",
-                  style: TextStyle(color: Color(0xff172b4d)),
+                  style: TextStyle(
+                      color: Color(0xff172b4d), fontWeight: FontWeight.w600),
                 ),
                 const Gap(10),
                 Container(
-                  padding: const EdgeInsets.all(22),
+                  padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white),
@@ -147,17 +124,21 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                             color: Color(0xff172b4d),
                           )),
                       const Gap(10),
-                      const Text(
-                          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                          style: TextStyle(
-                              color: Color(0xff172b4d), fontSize: 12)),
                       RichText(
                         text: const TextSpan(
                           text:
-                              "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’",
-                          style:
-                              TextStyle(color: Color(0xff1e83c3), fontSize: 12),
+                              "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                          style: TextStyle(
+                              color: Color(0xff172b4d),
+                              fontSize: 12,
+                              fontFamily: "Nunito"),
                           children: [
+                            TextSpan(
+                              text:
+                                  "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’",
+                              style: TextStyle(
+                                  color: Color(0xff1e83c3), fontSize: 12),
+                            ),
                             TextSpan(
                               text:
                                   "making it look like readable English. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English……..",
@@ -168,18 +149,137 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                         ),
                       ),
                       const Gap(12),
-                      const Text("01",
-                          style: TextStyle(
-                              color: Color(0xff172b4d),
-                              fontWeight: FontWeight.w700,
-                              fontFamily: "Merriweather"),),
+                      const Text(
+                        "01",
+                        style: TextStyle(
+                            color: Color(0xff172b4d),
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Merriweather"),
+                      ),
                     ],
                   ),
                 ),
+                Gap(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Pre",
+                      style: TextStyle(
+                        color: Color(0xff172b4d),
+                      ),
+                    ),
+                    Gap(20),
+                    PageWidget(
+                      number: "1",
+                      isSelected: true,
+                    ),
+                    Gap(16),
+                    PageWidget(
+                      number: "2",
+                      isSelected: false,
+                    ),
+                    Gap(16),
+                    PageWidget(
+                      number: "3",
+                      isSelected: true,
+                    ),
+                    Gap(10),
+                    Text(
+                      "Next",
+                      style: TextStyle(
+                        color: Color(0xff172b4d),
+                      ),
+                    ),
+                  ],
+                ),
+                const Gap(20),
+                PrimaryButton(
+                    title: "Submit",
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const PlaceOrderScreen()));
+                    })
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class LoadingWidget extends StatelessWidget {
+  final String image;
+  final String text;
+  final String progressbar;
+  const LoadingWidget({
+    Key? key,
+    required this.image,
+    required this.text,
+    required this.progressbar,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color(0xffc7d9d3),
+          ),
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset(image),
+          const Gap(8.0),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      text,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff172b4d)),
+                    ),
+                    Image.asset("assets/images/close.png"),
+                  ],
+                ),
+                const Text(
+                  "2Mb",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600, color: Color(0xff9b9b9b)),
+                ),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: LinearProgressIndicator(
+                        value: 0.8,
+                        backgroundColor: Color(0xfff0f0f0),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xff55776a)),
+                      ),
+                    ),
+                    const Gap(16),
+                    Text(
+                      progressbar,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff55776a)),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

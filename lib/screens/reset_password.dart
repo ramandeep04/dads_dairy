@@ -1,3 +1,4 @@
+import 'package:dads_dairy/screens/login_screen.dart';
 import 'package:dads_dairy/widgets/appbar.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,13 @@ class ResetPassword extends StatelessWidget {
                       suffixIcon: Icon(Iconsax.eye)),
                 ),
                 const Gap(50),
-                PrimaryButton(title: "Update", onPressed: () {})
+                PrimaryButton(
+                    title: "Update",
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ));
+                    })
               ],
             ),
           ),
