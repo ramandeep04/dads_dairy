@@ -13,20 +13,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(child: Image.asset("assets/images/dadsdairy.png")),
-                const Gap(24),
+                const Gap(20),
                 const Text(
                   "Login and start Writing",
                   style: TextStyle(
@@ -40,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration:
                       const InputDecoration(hintText: "Enter Email Or Phone"),
                 ),
-                const Gap(16),
+                const Gap(12),
                 TextFormField(
                   decoration: const InputDecoration(
                     hintText: "Password",
@@ -50,24 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const Gap(12),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Row(
-                      children: [
-                        Image.asset("assets/images/tick.png"),
-                        const Gap(4),
-                        TextButton(
-                          child: const Text(
-                            "Remember me",
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xff55766a)),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -81,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 32),
+                const Gap(10),
                 PrimaryButton(
                     title: "Log In",
                     onPressed: () {
@@ -115,11 +103,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const Gap(40),
                 TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Create New Account",
-                      style: TextStyle(color: Colors.black),
-                    ))
+                  onPressed: () {},
+                  child: const Text(
+                    "Create New Account",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                )
               ],
             ),
           ),

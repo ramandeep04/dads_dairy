@@ -21,17 +21,12 @@ class MyDairyScreen extends StatelessWidget {
                     fontSize: 29,
                     fontWeight: FontWeight.bold),
               ),
-              
               Expanded(
                 child: Stack(
-                  fit: StackFit.expand,
+                
                   children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Image.asset(
-                        "assets/images/dairy.png",
-                        fit: BoxFit.contain,
-                      ),
+                    Image.asset(
+                      "assets/images/dairy.png",
                     ),
                     Align(
                       alignment: const Alignment(0.0, -0.55),

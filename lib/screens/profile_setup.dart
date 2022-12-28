@@ -1,3 +1,4 @@
+import 'package:dads_dairy/screens/my_dairy_screen.dart';
 import 'package:dads_dairy/widgets/appbar.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -52,10 +53,16 @@ class ProfileSetup extends StatelessWidget {
                 const Gap(14),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Confirm Password", suffixIcon: Icon(Iconsax.eye)),
+                      hintText: "Confirm Password",
+                      suffixIcon: Icon(Iconsax.eye)),
                 ),
-             const Gap(60),
-                PrimaryButton(title: "Submit", onPressed: (){})
+                const Gap(60),
+                PrimaryButton(
+                    title: "Submit",
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const MyDairyScreen()));
+                    })
               ],
             ),
           ],

@@ -10,25 +10,40 @@ class FinalScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          Column(
-            children: [
-              Image.asset("assets/images/bgimage.png"),
-              Center(
-                child: Image.asset("assets/images/dairy.png",
-                    width: 182, height: 280),
-              ),
-              const Gap(16),
-              const Text(
-                
-                "Thank you for Ordering.We are on our way.",
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-              Expanded(
-               
-                child: Image.asset("assets/images/final.png",
-                    fit: BoxFit.contain),
-              )
-            ],
+          Positioned(
+            left: -90,
+            top: -0,
+            child: Image.asset("assets/images/bgimage.png"),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/dairy.png",
+                  height: 320,
+                ),
+                const Gap(16),
+                const Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    "Thank you for Ordering.\nWe are on our way.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,
+                    color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Image.asset(
+              "assets/images/final.png",
+              fit: BoxFit.contain,
+              alignment: Alignment.bottomCenter,
+            ),
           ),
         ],
       ),

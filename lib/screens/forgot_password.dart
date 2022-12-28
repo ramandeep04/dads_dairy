@@ -11,37 +11,44 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppbar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            Center(child: Image.asset("assets/images/accesscontrol.png")),
-            const Gap(50),
-            const Text(
-              "Forgot Password",
-              style: TextStyle(
-                  color: Color(0xff172b4d),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Image.asset("assets/images/accesscontrol.png"),
+                const Gap(50),
+                const Text(
+                  "Forgot Password",
+                  style: TextStyle(
+                      color: Color(0xff172b4d),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20),
+                ),
+                const Gap(6),
+                const Text(
+                  "Please enter your registered Phone number",
+                  style: TextStyle(color: Color(0xffa5a5a5), fontSize: 16),
+                ),
+                const Gap(22),
+                TextFormField(
+                  decoration:
+                      const InputDecoration(hintText: "Enter Email Or Phone"),
+                ),
+                const Gap(50),
+                PrimaryButton(
+                  title: "Continue",
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ResetPassword()));
+                  },
+                ),
+              ],
             ),
-            const Gap(6),
-            const Text(
-              "Please enter your registered Phone number",
-              style: TextStyle(color: Color(0xffa5a5a5), fontSize: 16),
-            ),
-            const Gap(22),
-            TextFormField(
-              decoration:
-                  const InputDecoration(hintText: "Enter Email Or Phone"),
-            ),
-            const Gap(70),
-            PrimaryButton(
-                title: "Continue",
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ResetPassword()));
-                },),
-          ],
+          ),
         ),
       ),
     );

@@ -11,41 +11,47 @@ class ResetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppbar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            Center(
-              child: Image.asset("assets/images/accesscontrol.png"),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Center(
+                  child: Image.asset("assets/images/accesscontrol.png"),
+                ),
+                const Gap(50),
+                const Text(
+                  "Reset Password",
+                  style: TextStyle(
+                      color: Color(0xff172b4d),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20),
+                ),
+                const Gap(6),
+                const Text(
+                  "Please enter your registered Phone number",
+                  style: TextStyle(color: Color(0xffa5a5a5), fontSize: 16),
+                ),
+                const Gap(22),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Enter New Password",
+                      suffixIcon: Icon(Iconsax.eye)),
+                ),
+                const Gap(14),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Confirm New Password",
+                      suffixIcon: Icon(Iconsax.eye)),
+                ),
+                const Gap(50),
+                PrimaryButton(title: "Update", onPressed: () {})
+              ],
             ),
-            const Gap(50),
-            const Text(
-              "Reset Password",
-              style: TextStyle(
-                  color: Color(0xff172b4d),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20),
-            ),
-            const Gap(6),
-            const Text(
-              "Please enter your registered Phone number",
-              style: TextStyle(color: Color(0xffa5a5a5), fontSize: 16),
-            ),
-            const Gap(22),
-            TextFormField(
-              decoration: const InputDecoration(
-                  hintText: "Enter New Password",
-                  suffixIcon: Icon(Iconsax.eye)),
-            ),
-            const Gap(14),
-            TextFormField(
-              decoration: const InputDecoration(
-                  hintText: "Confirm New Password",
-                  suffixIcon: Icon(Iconsax.eye)),
-            ),
-            const Gap(50),
-            PrimaryButton(title: "Update", onPressed: () {})
-          ],
+          ),
         ),
       ),
     );
