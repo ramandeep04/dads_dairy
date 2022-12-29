@@ -1,4 +1,6 @@
 import 'package:dads_dairy/screens/forgot_password.dart';
+import 'package:dads_dairy/screens/my_dairy_screen.dart';
+import 'package:dads_dairy/screens/profile_setup.dart';
 import 'package:dads_dairy/screens/verification_screen.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +59,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const ForgotPassword()));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ForgotPassword(),
+                          ),
+                        );
                       },
                       child: const Text(
                         "Forgot password?",
@@ -75,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const VerificationScreen(),
+                          builder: (context) => const MyDairyScreen(),
                         ),
                       );
                     }),
@@ -103,7 +107,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const Gap(40),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileSetup(),
+                      ),
+                    );
+                  },
                   child: const Text(
                     "Create New Account",
                     style: TextStyle(color: Colors.black),

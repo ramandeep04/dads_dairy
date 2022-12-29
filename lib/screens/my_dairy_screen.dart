@@ -1,3 +1,5 @@
+import 'package:dads_dairy/screens/note_screen.dart';
+import 'package:dads_dairy/screens/page_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -23,29 +25,37 @@ class MyDairyScreen extends StatelessWidget {
               ),
               Expanded(
                 child: Stack(
-                
                   children: [
                     Image.asset(
                       "assets/images/dairy.png",
                     ),
-                    Align(
-                      alignment: const Alignment(0.0, -0.55),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Text(
-                            "Upload New",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff55766a),
-                                fontSize: 16),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => PageScreen(),
                           ),
-                          Icon(
-                            Iconsax.add_square,
-                            size: 28,
-                            color: Color(0xff55766a),
-                          )
-                        ],
+                        );
+                      },
+                      child: Align(
+                        alignment: const Alignment(0.0, -0.55),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Text(
+                              "Upload New",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff55766a),
+                                  fontSize: 16),
+                            ),
+                            Icon(
+                              Iconsax.add_square,
+                              size: 28,
+                              color: Color(0xff55766a),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],

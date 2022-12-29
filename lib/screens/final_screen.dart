@@ -15,26 +15,27 @@ class FinalScreen extends StatelessWidget {
             top: -0,
             child: Image.asset("assets/images/bgimage.png"),
           ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/dairy.png",
-                  height: 320,
-                ),
-                const Gap(16),
-                const Align(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    "Thank you for Ordering.\nWe are on our way.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,
-                    color: Colors.white),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/images/dairy.png",
+                height: 320,
+              ),
+              const Gap(16),
+              const Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  "Thank you for Ordering.\nWe are on our way.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Positioned(
             bottom: 0,
