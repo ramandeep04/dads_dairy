@@ -1,4 +1,4 @@
-import 'package:dads_dairy/screens/dairy_detailed_screen.dart';
+import 'package:dads_dairy/screens/place_order_screen.dart';
 import 'package:dads_dairy/widgets/appbar.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,9 @@ class NoteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xfffef8ee),
-      appBar: const MyAppbar(color: Color(0xfffef8ee),),
+      appBar: const MyAppbar(
+        color: Color(0xfffef8ee),
+      ),
       body: ListView(
         children: [
           Stack(
@@ -97,8 +99,11 @@ class NoteScreen extends StatelessWidget {
                     child: PrimaryButton(
                         title: "Order Now",
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => DairyDetailedScreen()));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const PlaceOrderScreen(),
+                            ),
+                          );
                         }),
                   )
                 ],

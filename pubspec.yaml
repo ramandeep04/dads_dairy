@@ -40,7 +40,7 @@ dependencies:
   gap: ^2.0.1
   pin_code_fields: ^7.4.0
   dotted_border: ^2.0.0+3
-  
+  page_flip: ^0.0.2
    
 
 dev_dependencies:

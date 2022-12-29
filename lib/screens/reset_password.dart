@@ -50,12 +50,15 @@ class ResetPassword extends StatelessWidget {
                 ),
                 const Gap(50),
                 PrimaryButton(
-                    title: "Update",
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ));
-                    })
+                  title: "Update",
+                  onPressed: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                        (route) => false);
+                  },
+                )
               ],
             ),
           ),
