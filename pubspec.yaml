@@ -41,7 +41,11 @@ dependencies:
   pin_code_fields: ^7.4.0
   dotted_border: ^2.0.0+3
   page_flip: ^0.0.2
-   
+  flutter_quill: ^6.1.11
+  country_picker: ^2.0.19
+  intl: ^0.17.0
+  easy_mask: ^2.0.1
+  
 
 dev_dependencies:
   flutter_test:

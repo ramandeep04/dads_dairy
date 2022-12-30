@@ -1,9 +1,11 @@
 import 'package:dads_dairy/screens/note_screen.dart';
+import 'package:dads_dairy/screens/page_screen.dart';
 import 'package:dads_dairy/screens/place_order_screen.dart';
 import 'package:dads_dairy/widgets/appbar.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter_quill/flutter_quill.dart' as quil;
 import 'package:gap/gap.dart';
 
 class DairyDetailedScreen extends StatefulWidget {
@@ -14,6 +16,10 @@ class DairyDetailedScreen extends StatefulWidget {
 }
 
 class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
+  int selectedIndex = 0;
+  final _controller = PageController();
+  final quilController = quil.QuillController.basic();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,20 +41,16 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                       color: Color(0xff172b4d), fontWeight: FontWeight.w600),
                 ),
                 const Gap(10),
-                Container(
-                  width: 360,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: "Enter Title",
                   ),
-                  child: const Text(
-                    "Not happy to be leaving you",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff172b4d),
-                    ),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff172b4d),
                   ),
                 ),
                 const Gap(16),
@@ -104,102 +106,45 @@ class _DairyDetailedScreenState extends State<DairyDetailedScreen> {
                       color: Color(0xff172b4d), fontWeight: FontWeight.w600),
                 ),
                 const Gap(10),
+                quil.QuillToolbar.basic(
+                  controller: quilController,
+                  showSearchButton: false,
+                  iconTheme: quil.QuillIconTheme(
+                    iconSelectedFillColor: Theme.of(context).primaryColor,
+                    iconUnselectedFillColor: Colors.white,
+                  ),
+                  fontFamilyValues: const {
+                    'Roboto Mono': 'roboto-mono',
+                    "Holiday": "Holiday",
+                    'Nunito': 'nunito',
+                    'Pacifico': 'pacifico',
+                    'Clear': 'Clear'
+                  },
+                ),
+                const Gap(16),
                 Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 500,
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white),
-                  child: Column(
-                    children: [
-                      const Text(
-                        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here,",
-                        style:
-                            TextStyle(color: Color(0xff172b4d), fontSize: 12),
-                      ),
-                      const Gap(10),
-                      const Text(
-                          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English………",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xff172b4d),
-                          )),
-                      const Gap(10),
-                      RichText(
-                        text: const TextSpan(
-                          text:
-                              "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                          style: TextStyle(
-                              color: Color(0xff172b4d),
-                              fontSize: 12,
-                              fontFamily: "Nunito"),
-                          children: [
-                            TextSpan(
-                              text:
-                                  "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’",
-                              style: TextStyle(
-                                  color: Color(0xff1e83c3), fontSize: 12),
-                            ),
-                            TextSpan(
-                              text:
-                                  "making it look like readable English. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English……..",
-                              style: TextStyle(
-                                  color: Color(0xff172b4d), fontSize: 12),
-                            )
-                          ],
-                        ),
-                      ),
-                      const Gap(12),
-                      const Text(
-                        "01",
-                        style: TextStyle(
-                            color: Color(0xff172b4d),
-                            fontWeight: FontWeight.w700,
-                            fontFamily: "Merriweather"),
-                      ),
-                    ],
+                  child: quil.QuillEditor.basic(
+                    controller: quilController,
+                    readOnly: false, // true for view only mode
                   ),
-                ),
-                Gap(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Pre",
-                      style: TextStyle(
-                        color: Color(0xff172b4d),
-                      ),
-                    ),
-                    Gap(20),
-                    PageWidget(
-                      number: "1",
-                      isSelected: true,
-                    ),
-                    Gap(16),
-                    PageWidget(
-                      number: "2",
-                      isSelected: false,
-                    ),
-                    Gap(16),
-                    PageWidget(
-                      number: "3",
-                      isSelected: true,
-                    ),
-                    Gap(10),
-                    Text(
-                      "Next",
-                      style: TextStyle(
-                        color: Color(0xff172b4d),
-                      ),
-                    ),
-                  ],
                 ),
                 const Gap(20),
                 PrimaryButton(
-                    title: "Submit",
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const PlaceOrderScreen()));
-                    })
+                  title: "Submit",
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const PlaceOrderScreen(),
+                      ),
+                    );
+                  },
+                )
               ],
             ),
           ],

@@ -5,9 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ResetPassword extends StatelessWidget {
+class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
 
+  @override
+  State<ResetPassword> createState() => _ResetPasswordState();
+}
+
+class _ResetPasswordState extends State<ResetPassword> {
+  bool obscure = true;
+  bool obscured = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,15 +45,37 @@ class ResetPassword extends StatelessWidget {
                 ),
                 const Gap(22),
                 TextFormField(
-                  decoration: const InputDecoration(
-                      hintText: "Enter New Password",
-                      suffixIcon: Icon(Iconsax.eye)),
+                  obscureText: obscure,
+                  obscuringCharacter: "*",
+                  decoration: InputDecoration(
+                    hintText: "Enter New Password",
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            obscure = !obscure;
+                          });
+                        },
+                        icon: Icon(obscure ? Iconsax.eye4 : Iconsax.eye_slash5,
+                            color: const Color(0xffa5a5a5))),
+                  ),
                 ),
                 const Gap(14),
                 TextFormField(
-                  decoration: const InputDecoration(
-                      hintText: "Confirm New Password",
-                      suffixIcon: Icon(Iconsax.eye)),
+                  obscureText: obscured,
+                   obscuringCharacter: "*",
+                  decoration: InputDecoration(
+                    hintText: "Confirm New Password",
+                    suffixIcon: IconButton(
+                      icon: Icon(obscured ? Iconsax.eye4 : Iconsax.eye_slash5,
+                        color: const Color(0xffa5a5a5)
+                      ),
+                      onPressed: (() {
+                        setState(() {
+                          obscured = !obscured;
+                        });
+                      }),
+                    ),
+                  ),
                 ),
                 const Gap(50),
                 PrimaryButton(

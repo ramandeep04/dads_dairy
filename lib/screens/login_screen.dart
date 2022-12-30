@@ -1,7 +1,6 @@
 import 'package:dads_dairy/screens/forgot_password.dart';
 import 'package:dads_dairy/screens/my_dairy_screen.dart';
 import 'package:dads_dairy/screens/profile_setup.dart';
-import 'package:dads_dairy/screens/verification_screen.dart';
 import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -15,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool obscuredPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,99 +27,98 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(
               children: [
-                Center(child: Image.asset("assets/images/dadsdairy.png")),
-                const Gap(20),
-                const Text(
-                  "Login and start Writing",
-                  style: TextStyle(
-                    color: Color(0xff55766a),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Image.asset(
+                    "assets/images/bg.png",
                   ),
                 ),
-                const Gap(28),
-                TextFormField(
-                  decoration:
-                      const InputDecoration(hintText: "Enter Email Or Phone"),
-                ),
-                const Gap(12),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: "Password",
-                    suffixIcon: Icon(
-                      Iconsax.eye,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Center(child: Image.asset("assets/images/dadsdairy.png")),
+                    const Gap(20),
+                    const Text(
+                      "Login and start Writing",
+                      style: TextStyle(
+                        color: Color(0xff55766a),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(28),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                          hintText: "Enter Email Or Phone"),
+                    ),
+                    const Gap(12),
+                    TextFormField(
+                      obscureText: obscuredPassword,
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            obscuredPassword ? Iconsax.eye4 : Iconsax.eye_slash5,
+                           color: const Color(0xffa5a5a5)
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              obscuredPassword = !obscuredPassword;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const ForgotPassword(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                                fontSize: 12, color: Color(0xff2b2b2b)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(10),
+                    PrimaryButton(
+                        title: "Log In",
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const MyDairyScreen(),
+                            ),
+                          );
+                        }),
+                    const Gap(30),
+                   
+                    const Gap(40),
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const ForgotPassword(),
+                            builder: (context) => const ProfileSetup(),
                           ),
                         );
                       },
                       child: const Text(
-                        "Forgot password?",
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0xff2b2b2b)),
+                        "Create New Account",
+                        style: TextStyle(color: Colors.black),
                       ),
-                    ),
+                    )
                   ],
                 ),
-                const Gap(10),
-                PrimaryButton(
-                    title: "Log In",
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const MyDairyScreen(),
-                        ),
-                      );
-                    }),
-                const Gap(30),
-                Row(
-                  children: const [
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        "or login with",
-                        style: TextStyle(color: Color(0xffa5a5a5)),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                      ),
-                    ),
-                  ],
-                ),
-                const Gap(40),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const ProfileSetup(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "Create New Account",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                )
               ],
             ),
           ),

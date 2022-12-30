@@ -4,7 +4,6 @@ import 'package:dads_dairy/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:page_flip/page_flip.dart';
 
 class PageScreen extends StatefulWidget {
   const PageScreen({super.key});
@@ -26,18 +25,25 @@ class _PageScreenState extends State<PageScreen> {
       backgroundColor: const Color(0xfffef8ee),
       appBar: MyAppbar(
         color: const Color(0xfffef8ee),
+        title: "${selectedIndex + 1}",
+        fontFamily: "Merriweather",
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const DairyDetailedScreen(),
-                ),
-              );
-            },
-            icon: Icon(
-              Iconsax.edit,
-              color: Theme.of(context).primaryColor,
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: TextButton.icon(
+              style: TextButton.styleFrom(foregroundColor: Theme.of(context).primaryColor),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const DairyDetailedScreen(),
+                  ),
+                );
+              },
+              icon: Icon(
+                Iconsax.edit,
+                color: Theme.of(context).primaryColor,
+              ),
+              label: Text("Edit".toUpperCase()),
             ),
           ),
         ],
@@ -56,9 +62,20 @@ class _PageScreenState extends State<PageScreen> {
                 BookPage(
                   title: "Not Happy To Be Leaving you",
                   description: description,
+                  image: "assets/images/note.png",
                 ),
-                BookPage(description: description),
-                BookPage(description: description),
+                BookPage(
+                  description: description,
+                  image: "assets/images/page.png",
+                ),
+                BookPage(
+                  description: description,
+                  image: "assets/images/note.png",
+                ),
+                BookPage(
+                  description: description,
+                  image: "assets/images/page.png",
+                ),
               ],
             ),
           ),
@@ -81,7 +98,7 @@ class _PageScreenState extends State<PageScreen> {
               const Gap(20),
               Wrap(
                 spacing: 12.0,
-                children: List.generate(3, (index) {
+                children: List.generate(4, (index) {
                   return PageWidget(
                     number: "${index + 1}",
                     isSelected: index == selectedIndex,
@@ -134,8 +151,10 @@ class _PageScreenState extends State<PageScreen> {
 
 class BookPage extends StatelessWidget {
   final String? title;
+  final String image;
   final String description;
-  const BookPage({super.key, this.title, required this.description});
+  const BookPage(
+      {super.key, this.title, required this.description, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -145,15 +164,15 @@ class BookPage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              "assets/images/page.png",
+              image,
               fit: BoxFit.cover,
             ),
           ),
           Container(
             padding: const EdgeInsets.only(
               top: 45,
-              left: 80,
-              right: 60,
+              left: 70,
+              right: 70,
               bottom: 45,
             ),
             child: Column(
